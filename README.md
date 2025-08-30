@@ -39,6 +39,7 @@ _TBA_
 
 ### Team Members @webpack/security-wg
 
+- [Aviv Keller](https://github.com/avivkeller)
 - [Claudio Wunder](https://github.com/ovflowd)
 - [Even Stensberg](https://github.com/evenstensberg)
 - [Rafael Gonzaga](https://github.com/RafaelGSS)
