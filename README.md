@@ -42,6 +42,7 @@ _TBA_
 - [Claudio Wunder](https://github.com/ovflowd)
 - [Even Stensberg](https://github.com/evenstensberg)
 - [Rafael Gonzaga](https://github.com/RafaelGSS)
+- [Sebastian Beltran](https://github.com/bjohansebas)
 - [Ulises Gascón](https://github.com/UlisesGascon)
 
 ## Meetings
