@@ -53,6 +53,12 @@ For a security issue to be considered a vulnerability in Webpack (or its officia
 
 *(All of the above assume default/documented configurations and no compromise of trusted elements.)*
 
+> [!NOTE]  
+> **[CVE-2024-43788](https://www.cve.org/CVERecord?id=CVE-2024-43788) – DOM Clobbering → XSS in Webpack Runtime**  
+> In affected versions, the `AutoPublicPathRuntimeModule` relied on `document.currentScript` without verifying it was actually a `<script>` element.  
+> Attacker-controlled HTML elements (e.g., with `name="currentScript"`) could override this, causing Webpack’s runtime to miscompute `__webpack_require__.p` and load attacker-controlled scripts.  
+> Fixed in **Webpack 5.94.0**.  
+> *This falls in scope because it lets untrusted network input alter Webpack’s runtime behavior beyond documented guarantees.*
 
 ## Examples of Non-Vulnerabilities (out of scope)
 
