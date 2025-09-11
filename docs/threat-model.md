@@ -18,7 +18,7 @@ For a security issue to be considered a vulnerability in Webpack (or other offic
 
 ## Elements Webpack Trusts
 
-1. **Developers and the infrastructure that runs Webpack**  
+1. **Developers and development infrastructure**  
    Local machines, CI/CD runners, container images, shell environment, and the people operating them.
 
 2. **Operating system and Node.js runtime**  
