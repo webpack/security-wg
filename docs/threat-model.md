@@ -6,7 +6,7 @@ For a security issue to be considered a vulnerability in Webpack (or other offic
 
 ## Elements Webpack Does NOT Trust
 
-1. **Network inputs handled by development tooling**  
+1. **Network data passed to development tooling**  
    Any data received by [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) (or equivalent dev middleware), including HTTP requests, headers, query strings, WebSocket/HMR messages, and static-file requests from a browser.  
    *If data passing through these interfaces can trigger behavior beyond what is documented (e.g., directory traversal, arbitrary file read outside the configured static roots, state corruption, injection into HMR control channels), that likely indicates a security vulnerability.*
 
