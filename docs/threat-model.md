@@ -16,7 +16,7 @@ For a security issue to be considered a vulnerability in Webpack (or other offic
 ## Elements Webpack Trusts
 
 1. **Developers and development infrastructure**  
-   Webpack assumes that the environment it runs in is already secured and properly configured. This responsibility covers both the infrastructure (such as local machines, CI/CD runners, container images, shell environments, operating system, and Node.js runtime) and the users who operate them.
+   Webpack assumes that the environment it runs in is already secured and properly configured. This responsibility covers both the infrastructure (such as local machines, CI/CD runners, container images, shell environments, operating system, and Node.js runtime) and the users who operate them, including their privileges and access rights.
 
 2. **Build-time code and configuration**  
 	- Webpack configuration files (`webpack.config.*`) and any code they import or contain
@@ -32,9 +32,6 @@ For a security issue to be considered a vulnerability in Webpack (or other offic
 
 5. **Explicitly configured network resources**  
    Any outbound fetches/proxies that the developer *intentionally* configures in dev tooling (e.g., `devServer.proxy`) are considered trusted choices made by the developer.
-
-6. **Privileges of the executing user**  
-   Whatever the invoking user can access (files, sockets, processes) is inherited by the build and thus by code it executes.
 
 
 ## Examples of Vulnerabilities (in scope)
