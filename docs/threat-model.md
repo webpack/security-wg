@@ -19,7 +19,7 @@ For a security issue to be considered a vulnerability in Webpack (or other offic
 ## Elements Webpack Trusts
 
 1. **Developers and development infrastructure**  
-   Local machines, CI/CD runners, container images, shell environment, and the people operating them.
+   Webpack assumes that the environment it runs in is already secured and properly configured. This responsibility covers both the infrastructure (such as local machines, CI/CD runners, container images, and shell environments) and the users who operate them.
 
 2. **Operating system and Node.js runtime**  
    Including their configuration and anything under OS control.
