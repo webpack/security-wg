@@ -1,6 +1,6 @@
 # The Webpack Threat Model
 
-The Webpack threat model delineates what Webpack trusts at build time and what it does not trust (chiefly, inputs that can cross a network boundary when using dev tooling). Vulnerabilities that require compromising trusted elements (e.g., the OS, Node.js runtime, or developer-controlled code like loaders/plugins/config) are out of scope for Webpack.
+The Webpack threat model delineates what Webpack trusts at build time and what it does not trust (chiefly, inputs that can cross a network boundary when using dev tooling).
 
 For a security issue to be considered a vulnerability in Webpack (or other official tooling), it must not require compromise of trusted elements.
 
