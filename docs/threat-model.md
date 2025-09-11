@@ -23,14 +23,12 @@ For a security issue to be considered a vulnerability in Webpack (or other offic
    - Any CLI flags and/or other configurations
 	- Loaders and plugins, including their transitive npm dependencies
 	- Dev server and middleware configuration hooks
+	- Environment variables and values injected via `DefinePlugin`, `EnvironmentPlugin`, etc.
 
 3. **Project sources and assets**  
    JavaScript/TypeScript, styles, templates, images, fonts, etc., within the configured project context and any paths the build intentionally resolves (`resolve.modules`, aliases, loader `include`/`exclude`, etc.).
 
-4. **Build-time environment and configuration inputs**  
-   CLI flags, environment variables, and values injected via `DefinePlugin`, `EnvironmentPlugin`, etc., are trusted inputs provided by the developer/build system.
-
-5. **Explicitly configured network resources**  
+4. **Explicitly configured network resources**  
    Any outbound fetches/proxies that the developer *intentionally* configures in dev tooling (e.g., `devServer.proxy`) are considered trusted choices made by the developer.
 
 
