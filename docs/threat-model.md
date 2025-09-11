@@ -25,10 +25,10 @@ For a security issue to be considered a vulnerability in Webpack (or other offic
    Including their configuration and anything under OS control.
 
 3. **All code executed at build time**  
-   - `webpack.config.*` and any code it imports  
-   - Loaders and plugins (including transitive npm dependencies)  
-   - Dev server/middleware configuration hooks  
-   These are considered trusted application code.
+	- Webpack configuration files (`webpack.config.*`) and any code they import or contain
+   - Any CLI flags and/or other configurations
+	- Loaders and plugins, including their transitive npm dependencies
+	- Dev server and middleware configuration hooks
 
 4. **Project sources and assets**  
    JavaScript/TypeScript, styles, templates, images, fonts, etc., within the configured project context and any paths the build intentionally resolves (`resolve.modules`, aliases, loader `include`/`exclude`, etc.).
