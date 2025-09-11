@@ -18,12 +18,16 @@ The Security Triage Team is responsible for managing incoming security reports, 
 - Support initiatives from the [OpenJS Foundation Security Collab Space](https://github.com/openjs-foundation/security-collab-space).
 - Support initiatives from the OpenSSF [Best Practices for Open Source Developers Working Group](https://github.com/ossf/wg-best-practices-os-developers).
 
+## Documents
+
+- [Incident Response Plan](https://github.com/webpack/webpack/blob/main/INCIDENT_REPONSE_PLAN.md)
+- [Security Reporting Policy](https://github.com/webpack/webpack/blob/main/SECURITY.md)
+
 ## Current Initiatives
 
 | Initiative | Champion | Status | Links |
 |------------|----------|--------|-------|
 | Kick off the WG | [@UlisesGascon](https://github.com/UlisesGascon) | In progress | _none_ |
-| Incident Response Plan | [@RafaelGSS](https://github.com/rafaelgss) | In progress | [PR #19841](https://github.com/webpack/webpack/pull/19841)|
 
 ## Members
 
