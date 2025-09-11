@@ -6,12 +6,9 @@ For a security issue to be considered a vulnerability in Webpack (or other offic
 
 ## Elements Webpack Does NOT Trust
 
-1. **Network data passed to development tooling**  
-   Any data received by [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) (or equivalent dev middleware), including HTTP requests, headers, query strings, WebSocket/HMR messages, and static-file requests from a browser.  
-   *If data passing through these interfaces can trigger behavior beyond what is documented (e.g., directory traversal, arbitrary file read outside the configured static roots, state corruption, injection into HMR control channels), that likely indicates a security vulnerability.*
-
-2. **Untrusted clients interacting with dev tooling**  
-   When dev tooling is reachable from non-developer networks (mistakes, port-forwarding, Wi-Fi sharing, etc.), those clients are untrusted. The server must enforce its documented isolation guarantees (e.g., path normalization, origin checks where applicable).
+1. **Network data and untrusted clients interacting with dev tooling**  
+   Any data received by [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) (or equivalent dev middleware) from any source, including HTTP requests, headers, query strings, WebSocket/HMR messages, and static-file requests. This includes both malformed data and requests from clients outside the intended developer environment (e.g., due to port-forwarding, Wi-Fi sharing, or accidental exposure).  
+   *If such interactions can trigger behavior beyond what is documented (e.g., directory traversal, arbitrary file read outside configured static roots, state corruption, injection into HMR control channels, or bypassing isolation guarantees), that likely indicates a security vulnerability.*
 
 > [!NOTE]
 > This model is based on the assumption that **Webpack is not used as your production edge server**. If someone deploys webpack-dev-server in a production environment or makes it accessible on the public internet, the security risks that arise should be considered an operational misconfiguration, not a Webpack vulnerability. While it is still worthwhile to make development tools more resilient against misuse, that is not the primary responsibility of Webpack itself.
