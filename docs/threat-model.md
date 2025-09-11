@@ -16,27 +16,24 @@ For a security issue to be considered a vulnerability in Webpack (or other offic
 ## Elements Webpack Trusts
 
 1. **Developers and development infrastructure**  
-   Webpack assumes that the environment it runs in is already secured and properly configured. This responsibility covers both the infrastructure (such as local machines, CI/CD runners, container images, and shell environments) and the users who operate them.
+   Webpack assumes that the environment it runs in is already secured and properly configured. This responsibility covers both the infrastructure (such as local machines, CI/CD runners, container images, shell environments, operating system, and Node.js runtime) and the users who operate them.
 
-2. **Operating system and Node.js runtime**  
-   Including their configuration and anything under OS control.
-
-3. **Build-time code and configuration**  
+2. **Build-time code and configuration**  
 	- Webpack configuration files (`webpack.config.*`) and any code they import or contain
    - Any CLI flags and/or other configurations
 	- Loaders and plugins, including their transitive npm dependencies
 	- Dev server and middleware configuration hooks
 
-4. **Project sources and assets**  
+3. **Project sources and assets**  
    JavaScript/TypeScript, styles, templates, images, fonts, etc., within the configured project context and any paths the build intentionally resolves (`resolve.modules`, aliases, loader `include`/`exclude`, etc.).
 
-5. **Build-time environment and configuration inputs**  
+4. **Build-time environment and configuration inputs**  
    CLI flags, environment variables, and values injected via `DefinePlugin`, `EnvironmentPlugin`, etc., are trusted inputs provided by the developer/build system.
 
-6. **Explicitly configured network resources**  
+5. **Explicitly configured network resources**  
    Any outbound fetches/proxies that the developer *intentionally* configures in dev tooling (e.g., `devServer.proxy`) are considered trusted choices made by the developer.
 
-7. **Privileges of the executing user**  
+6. **Privileges of the executing user**  
    Whatever the invoking user can access (files, sockets, processes) is inherited by the build and thus by code it executes.
 
 
