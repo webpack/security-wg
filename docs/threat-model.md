@@ -24,7 +24,7 @@ For a security issue to be considered a vulnerability in Webpack (or other offic
 2. **Operating system and Node.js runtime**  
    Including their configuration and anything under OS control.
 
-3. **All code executed at build time**  
+3. **Build-time code and configuration**  
 	- Webpack configuration files (`webpack.config.*`) and any code they import or contain
    - Any CLI flags and/or other configurations
 	- Loaders and plugins, including their transitive npm dependencies
