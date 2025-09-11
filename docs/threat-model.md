@@ -14,7 +14,7 @@ For a security issue to be considered a vulnerability in Webpack (or other offic
    When dev tooling is reachable from non-developer networks (mistakes, port-forwarding, Wi-Fi sharing, etc.), those clients are untrusted. The server must enforce its documented isolation guarantees (e.g., path normalization, origin checks where applicable).
 
 > [!NOTE]
-> This model assumes **Webpack is not your production edge**. If someone runs `webpack-dev-server` in production or exposes it to the public internet, any resulting risk is an operational misconfiguration rather than a Webpack vulnerability—though hardening dev tooling against misuse is still desirable.
+> This model is based on the assumption that **Webpack is not used as your production edge server**. If someone deploys webpack-dev-server in a production environment or makes it accessible on the public internet, the security risks that arise should be considered an operational misconfiguration, not a Webpack vulnerability. While it is still worthwhile to make development tools more resilient against misuse, that is not the primary responsibility of Webpack itself.
 
 ## Elements Webpack Trusts
 
