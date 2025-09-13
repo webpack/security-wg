@@ -1,0 +1,72 @@
+# The Webpack Threat Model
+
+The Webpack threat model delineates what Webpack trusts at build time and what it does not trust (chiefly, inputs that can cross a network boundary when using dev tooling).
+
+For a security issue to be considered a vulnerability in Webpack (or other official tooling), it must not require compromise of trusted elements.
+
+## Elements Webpack Does NOT Trust
+
+1. **Network data and untrusted clients interacting with dev tooling**  
+   Any data received by [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) (or equivalent dev middleware) from any source, including HTTP requests, headers, query strings, WebSocket/HMR messages, and static-file requests. This includes both malformed data and requests from clients outside the intended developer environment (e.g., due to port-forwarding, Wi-Fi sharing, or accidental exposure).  
+   *If such interactions can trigger behavior beyond what is documented (e.g., directory traversal, arbitrary file read outside configured static roots, state corruption, injection into HMR control channels, or bypassing isolation guarantees), that likely indicates a security vulnerability.*
+
+> [!NOTE]
+> This model is based on the assumption that **Webpack is not used as your production edge server**. If someone deploys webpack-dev-server in a production environment or makes it accessible on the public internet, the security risks that arise should be considered an operational misconfiguration, not a Webpack vulnerability. While it is still worthwhile to make development tools more resilient against misuse, that is not the primary responsibility of Webpack itself.
+
+## Elements Webpack Trusts
+
+1. **Developers and development infrastructure**  
+   Webpack assumes that the environment it runs in is already secured and properly configured. This responsibility covers both the infrastructure (such as local machines, CI/CD runners, container images, shell environments, operating system, and Node.js runtime) and the users who operate them, including their privileges and access rights.
+
+2. **Build-time code and configuration**  
+	- Webpack configuration files (`webpack.config.*`) and any code they import or contain
+   - Any CLI flags and/or other configurations
+	- Loaders and plugins, including their transitive npm dependencies
+	- Dev server and middleware configuration hooks
+	- Environment variables and values injected via `DefinePlugin`, `EnvironmentPlugin`, etc.
+
+3. **Project sources and assets**  
+   JavaScript/TypeScript, styles, templates, images, fonts, etc., within the configured project context and any paths the build intentionally resolves (`resolve.modules`, aliases, loader `include`/`exclude`, etc.).
+
+4. **Explicitly configured network resources**  
+   Any outbound fetches/proxies that the developer *intentionally* configures in dev tooling (e.g., `devServer.proxy`) are considered trusted choices made by the developer.
+
+
+## Examples of Vulnerabilities (in scope)
+
+- **Path traversal / arbitrary file read** via `webpack-dev-server` static file serving escaping configured roots.
+- **HMR/WebSocket message injection** that lets an unauthenticated client corrupt dev-server state, run client-side JS outside the documented HMR protocol, or crash the server.
+- **Reflected file serving bugs** that allow reading source maps or files outside intended scopes through crafted URLs.
+- **Denial of service** in dev tooling where a single unauthenticated request can lock the event loop or exhaust memory beyond documented behavior.
+- **Insufficient origin/host checks** in dev tooling that permit cross-origin misuse of privileged endpoints (when such checks are part of the documented guarantees).
+
+*(All of the above assume default/documented configurations and no compromise of trusted elements.)*
+
+### Example CVE 
+
+The **[CVE-2024-43788](https://www.cve.org/CVERecord?id=CVE-2024-43788)** – DOM Clobbering → XSS in Webpack Runtime
+
+In affected versions, the `AutoPublicPathRuntimeModule` relied on `document.currentScript` without verifying it was actually a `<script>` element. Attacker-controlled HTML elements (e.g., with `name="currentScript"`) could override this, causing Webpack's runtime to miscompute `__webpack_require__.p` and load attacker-controlled scripts.
+
+Fixed in Webpack 5.94.0. *This falls in scope because it lets untrusted network input alter Webpack's runtime behavior beyond documented guarantees.*
+
+
+## Examples of Non-Vulnerabilities (out of scope)
+
+### Malicious Third-Party Loaders/Plugins ([CWE-1357](https://cwe.mitre.org/data/definitions/1357.html))
+Code executed at build time (loaders/plugins/config and their deps) is trusted. If a malicious or vulnerable loader causes RCE, file exfiltration, or DoS during the build, that is a supply-chain risk for the project, not a Webpack vulnerability.
+
+### Application Bugs in the Bundled Output
+XSS, CSRF, CSP misconfigurations, or logic flaws in the application bundle served in production are not Webpack vulnerabilities. Webpack is a compiler/bundler; correctness and security of the resulting app code are the app’s responsibility.
+
+### Leaking Secrets by Misconfiguration
+Accidentally injecting secrets into client bundles via `DefinePlugin`/`EnvironmentPlugin`, or bundling dev-only code because of incorrect `mode`/`define` settings, is an application/config issue, not a Webpack vulnerability.
+
+### Uncontrolled Search Path / Arbitrary File Access ([CWE-427](https://cwe.mitre.org/data/definitions/427.html)) Within Trusted Context
+Webpack (and loaders) reading any file reachable by the invoking user or configured resolve paths is expected behavior. If a developer points `resolve.modules` or a loader at a sensitive directory, that is not a Webpack vulnerability.
+
+### External Control of Build Configuration ([CWE-15](https://cwe.mitre.org/data/definitions/15.html))
+If an attacker can modify environment variables, CLI flags, or `webpack.config.*`, they already control trusted inputs. Consequences are out of scope for Webpack’s threat model.
+
+### Vulnerabilities in Node.js / OS
+Bugs in Node.js, the kernel, or OpenSSL—especially on EOL versions—are outside Webpack’s scope.
