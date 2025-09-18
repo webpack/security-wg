@@ -20,7 +20,7 @@ The Security Triage Team is responsible for managing incoming security reports, 
 
 ## Documents
 
-- [Incident Response Plan](https://github.com/webpack/webpack/blob/main/INCIDENT_REPONSE_PLAN.md)
+- [Incident Response Plan](https://github.com/webpack/webpack/blob/main/INCIDENT_RESPONSE_PLAN.md)
 - [Security Reporting Policy](https://github.com/webpack/webpack/blob/main/SECURITY.md)
 
 ## Current Initiatives
