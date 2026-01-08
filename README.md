@@ -35,7 +35,7 @@ The Security Working Group is composed of two groups of members: the Security Tr
 
 ### Security Triage Team @webpack/security-triage
 
-_TBA_
+- [Sebastian Beltran](https://github.com/bjohansebas)
 
 ### Lead Members @webpack/security-wg-leads
 
