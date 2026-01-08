@@ -39,10 +39,6 @@ The Security Working Group is composed of two groups of members: the Security Tr
 - [Sebastian Beltran](https://github.com/bjohansebas)
 - [Ulises Gascón](https://github.com/UlisesGascon)
 
-### Lead Members @webpack/security-wg-leads
-
-_TBA_
-
 ### Team Members @webpack/security-wg
 
 - [Aviv Keller](https://github.com/avivkeller)
