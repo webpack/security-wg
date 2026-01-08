@@ -35,7 +35,9 @@ The Security Working Group is composed of two groups of members: the Security Tr
 
 ### Security Triage Team @webpack/security-triage
 
-_TBA_
+- [Aviv Keller](https://github.com/avivkeller)
+- [Sebastian Beltran](https://github.com/bjohansebas)
+- [Ulises Gascón](https://github.com/UlisesGascon)
 
 ### Lead Members @webpack/security-wg-leads
 
