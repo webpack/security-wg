@@ -58,7 +58,7 @@ The Security Working Group meets on an ad hoc basis. The meeting is open to the 
 
 ## Offline Discussions
 
-The Security Working Group uses [GitHub issues](https://github.com/webpack/security-wg/issues) for offline discussion. The discussions are open to the public and anyone may participate. Also, the group uses the channel `#Webpack-security-wg` in the [OpenJS Foundation Slack](https://openjsf.org/collaboration) for realtime discussions.
+The Security Working Group uses [GitHub issues](https://github.com/webpack/security-wg/issues) for offline discussion. The discussions are open to the public and anyone may participate.
 
 ## Code of Conduct
 
