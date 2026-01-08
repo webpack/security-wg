@@ -9,7 +9,7 @@ The Security Triage Team is responsible for managing incoming security reports, 
 ### Responsibilities
 
 - Define the Security triage role
-- Define and maintain security policies and procedures for the project and the packages in scope (see [this table for scope details](https://github.com/webpack/security-wg/blob/main/docs/packages-in-scope.md))
+- Define and maintain security policies and procedures for the project and the packages in scope (see [this table for scope details](https://github.com/webpack/security-wg/blob/HEAD/docs/packages-in-scope.md))
 - Provide guidance to the ecosystem on how to build more secure plugins
 - Review and recommend processes for handling of security reports.
 - Promote improvement of security practices within the Webpack project's ecosystem (For example: OSSF Scorecard, threat model, etc..)
@@ -20,8 +20,8 @@ The Security Triage Team is responsible for managing incoming security reports, 
 
 ## Documents
 
-- [Incident Response Plan](https://github.com/webpack/webpack/blob/main/INCIDENT_RESPONSE_PLAN.md)
-- [Security Reporting Policy](https://github.com/webpack/webpack/blob/main/SECURITY.md)
+- [Incident Response Plan](https://github.com/webpack/security-wg/blob/HEAD/INCIDENT_RESPONSE_PLAN.md)
+- [Security Reporting Policy](https://github.com/webpack/.github/blob/HEAD/.github/SECURITY.md)
 
 ## Current Initiatives
 
@@ -58,4 +58,4 @@ The Security Working Group uses [GitHub issues](https://github.com/webpack/secur
 
 ## Code of Conduct
 
-The [Webpack Project's CoC](https://github.com/webpack/webpack/blob/main/CODE_OF_CONDUCT.md) applies to this repo.
+The [Webpack Project's CoC](https://github.com/webpack/.github/blob/HEAD/.github/CODE_OF_CONDUCT.md) applies to this repo.
